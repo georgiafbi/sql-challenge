@@ -21,3 +21,15 @@ from employees as e
 inner join dept_emp as de on de.emp_no = e.emp_no
 inner join departments as d on d.dept_no = de.dept_no;
 
+create view list_5 as
+select first_name as "First Name", last_name as "Last Name", sex as "Sex"
+from employees
+where first_name Like '%Hercules%' and last_name Like 'B%';
+
+create view list_6 as
+select e.emp_no as "Employee Number", e.last_name as "Last Name", e.first_name as "First Name", dp.dept_name as "Department Name"
+from employees as e
+inner join (select s.dept_name, d.emp_no 
+			from dept_emp as d inner join (select * from departments 
+										  where dept_name Like '%Sales%') as s on s.dept_no = d.dept_no) 
+										  as dp on dp.emp_no = e.emp_no;
