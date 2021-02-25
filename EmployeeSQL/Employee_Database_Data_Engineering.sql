@@ -1,20 +1,10 @@
--- Exported from QuickDBD: https://www.quickdatabasediagrams.com/
--- Link to schema: https://app.quickdatabasediagrams.com/#/d/b9YDHu
--- NOTE! If you have used non-SQL datatypes in your design, you will have to change these here.
-
--- Modify this code to update the DB schema diagram.
--- To reset the sample schema, replace everything with
--- two dots ('..' - without quotes).
--- Determine the relations
--- replace /relationship/ with the type of relationship to corresponding table
-drop table departments, titles, employees;
+--Creates the normalized tables for the employee database
 
 CREATE TABLE departments(
     dept_no VARCHAR(30)   NOT NULL PRIMARY KEY,
     dept_name VARCHAR(30)   NOT NULL
 );
 
-select * from departments;
 
 CREATE TABLE titles (
     title_id VARCHAR(30)   NOT NULL PRIMARY KEY,
