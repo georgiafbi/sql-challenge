@@ -33,3 +33,14 @@ inner join (select s.dept_name, d.emp_no
 			from dept_emp as d inner join (select * from departments 
 										  where dept_name Like '%Sales%') as s on s.dept_no = d.dept_no) 
 										  as dp on dp.emp_no = e.emp_no;
+										  
+
+create view list_7 as
+select e.emp_no as "Employee Number", e.last_name as "Last Name", e.first_name as "First Name", edd.dept_name as "Department Name"
+from employees as e
+inner join (select de.emp_no, de.dept_no, ds.dept_name
+from dept_emp as de
+inner join (select * from departments where dept_name Like '%Development%' or dept_name Like '%Sales%') as ds on ds.dept_no = de.dept_no) as edd on edd.emp_no = e.emp_no;
+
+create view list_8 as
+select last_name, count(*) as "Last Name Frequency Count" from employees group by last_name order by count(last_name) desc;
